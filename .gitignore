@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.output/
+.vinxi/
+.tanstack/
+.env
+.env.*
+screenshots/
+artifacts/
+/tmp/
+*.log
