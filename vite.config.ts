@@ -171,6 +171,9 @@ export default defineConfig(({ command, isPreview }) => ({
       ? [
           nitro({
             preset: process.env.RENDER ? "node-server" : "vercel",
+            // PGLite reads pglite.data next to its package. Bundling it into
+            // .output/server/_libs drops that file and crashes on Render.
+            externals: { external: ["@electric-sql/pglite"] },
             // Auto-registers server/middleware/* (the PWA install page +
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
